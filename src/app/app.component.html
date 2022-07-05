@@ -1,15 +1,96 @@
 <h1>Angular</h1>
+
+<!-- SECTION 3 -->
 <!-- <courses></courses>  -->
 
+<!-- SECTION 4 -->
 <!-- [isFavorite] is property of favorite element-->
 <!-- Pass $event object to  onFavoriteChanged() function-->
 <!-- <favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite> -->
 
-<!-- ngContent -->
-<bootstrap-panel>
+<!-- SECTION 5 -->
+<!-- ng-Content ng-container-->
+<!-- <bootstrap-panel>
     <ng-container class="heading">Heading</ng-container> 
     <div class="body">
         <h2>Body</h2>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat veniam iusto illum possimus dolorum, repellendus quisquam aliquam molestiae laborum sapiente accusamus nihil nisi laboriosam, maxime fuga unde officiis esse suscipit?</p>
     </div>
-</bootstrap-panel>
+</bootstrap-panel> -->
+
+<!-- SECTION 6 -->
+<!-- ngIf and ng-template-->
+<!-- <div *ngIf="courses.length > 0; then coursesList else noCourse"></div>
+<ng-template #coursesList>
+    List of courses
+</ng-template>
+<ng-template #noCourse>No course </ng-template> -->
+
+<!-- hidden property -->
+<!-- <div [hidden]="courses.length < 0">
+    List of courses
+</div>
+<div [hidden]="courses.length > 0">
+    No course 
+</div> -->
+
+<!-- <ul class="nav nav-pills">
+    <li class="nav-item">
+        <a 
+            class="nav-link" 
+            [class.active]="viewMode == 'map'"
+            href="#"
+            (click)="viewMode = 'map'"
+            >
+            Map View
+        </a>
+    </li>
+    <li class="nav-item">
+        <a 
+            class="nav-link" 
+            [class.active]="viewMode == 'list'" 
+            href="#"
+            (click)="viewMode = 'list'"
+            >
+            List View
+        </a>
+    </li>
+</ul>
+
+<div [ngSwitch]="viewMode">
+    <div *ngSwitchCase="'map'">Map View Content</div>
+    <div *ngSwitchCase="'list'">List View Content</div>
+    <div *ngSwitchDefault>Otherwise</div>
+</div> -->
+
+<!-- index even odd count last is local variable  -->
+<!-- <ul>
+    <li *ngFor="let course of courses; even as isEven">
+         {{ course.name }} <span *ngIf="isEven">(EVEN)</span>
+    </li>
+</ul> -->
+
+<!-- ngFor and change detection -->
+<!-- <button (click)="onAdd()">Add</button>
+<ul>
+    <li *ngFor="let course of courses">
+        {{ course.name }}
+        <button (click)="onRemove(course)">Remove</button>
+    </li>
+</ul> -->
+
+<!-- trackBy help no-load data if click event is fired -->
+<!-- <button (click)="loadCourses()">Load Courses</button>
+<ul>
+    <li *ngFor="let course of courses; trackBy: trackCourse">
+        {{ course.name }}
+    </li>
+</ul>
+
+<p>
+    {{ task.assignee.name }}
+</p> -->
+
+<!-- <input type="text" appInputFormat [format]="'uppercase'"/> -->
+
+<input type="text" [appInputFormat]="'uppercase'"/>
