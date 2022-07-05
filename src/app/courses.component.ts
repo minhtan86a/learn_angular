@@ -9,11 +9,11 @@ import { CoursesService } from "./courses.service";
         <!-- [textContent] is property of H2 -->
         <h2 [textContent]="title"></h2>
 
-        <!-- <ul>
+        <ul>
             <li *ngFor="let course of courses" >
                  {{ course }}
             </li>
-        </ul> -->
+        </ul> 
 
         <img src="{{ imageUrl }}" />
         <!-- [src] is property of img -->
@@ -54,17 +54,21 @@ import { CoursesService } from "./courses.service";
         <!-- Event Filtering -->
         <!-- keyup.enter is event filtering -->
         <div>
+            <p> Event Filtering (keyup.enter)</p>
             <input (keyup.enter)="onKeyUp($event)" />
         </div>
+        
         <!-- Template variable and Two way binding-->
         <!-- #email is template variable -->
         <div>
-            <!-- <input #email (keyup.enter)="onKeyUpTemplate(email.value)" /> -->
+            <p>Template variable</p>
+            <input #email (keyup.enter)="onKeyUpTemplate(email.value)" />
 
             <!-- add FormsModule for twoway binding -->
+            <p>Twoway binding</p>
             <input 
-                [(ngModel)]="email" 
-                (keyup.enter)="onKeyUpTemplate()" />
+                [(ngModel)]="emailTwoWay" 
+                (keyup.enter)="onKeyUpTwoway()" />
         </div>
 
         <!-- PIPES -->
@@ -79,12 +83,15 @@ import { CoursesService } from "./courses.service";
         `
 })
 export class CoursesComponent {
+    courses: string[] = ['course1', 'course2', 'course3'];
+
+
     title = "List of courses A";
     imageUrl = "https://images.unsplash.com/photo-1649859396073-13ff3244ec1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=400&q=60";
     colSpan = 2;
     isActive = true;
-
-    email = "me@example.com"; //Two way biding
+    //email: any; //no need if use template variable
+    emailTwoWay:any = "example@email.com"; //Two way biding
 
     //custom pipe
     text = `loremasdlj sd jflsdfklsdf sdifjslk djflsdjhflksdj lkjslkjf lskdjfljsdl kfjsdlf loremasdlj sd jflsdfklsdf sdifjslk djflsdjhflksdj lkjslkjf lskdjfljsdl kfjsdlf loremasdlj sd jflsdfklsdf sdifjslk djflsdjhflksdj lkjslkjf lskdjfljsdl kfjsdlf loremasdlj sd jflsdfklsdf sdifjslk djflsdjhflksdj lkjslkjf lskdjfljsdl kfjsdlf loremasdlj sd jflsdfklsdf sdifjslk djflsdjhflksdj lkjslkjf lskdjfljsdl kfjsdlf`
@@ -112,19 +119,20 @@ export class CoursesComponent {
         console.log($event.target.value);
     }
 
-    onKeyUpTemplate() {
-        console.log(this.email);
+    onKeyUpTemplate(email:any) {
+        console.log(email);
+    }
+
+    onKeyUpTwoway() {
+        console.log(this.emailTwoWay);
     }
 
     // getTitle() {
     //     return this.title;
     // }
 
-    //courses = ['course1', 'course2', 'course3'];
-
     //Logic for calling an http service
     //courses;
-
     // constructor(service: CoursesService) {
     //     this.courses = service.getCourses();
     // }
